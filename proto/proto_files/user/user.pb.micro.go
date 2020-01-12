@@ -5,13 +5,14 @@ package auth_srv_user
 
 import (
 	fmt "fmt"
-	proto "github.com/golang/protobuf/proto"
 	math "math"
-)
 
-import (
+	proto "github.com/golang/protobuf/proto"
+
 	context "context"
+
 	client "github.com/micro/go-micro/client"
+
 	server "github.com/micro/go-micro/server"
 )
 
@@ -73,6 +74,7 @@ func (c *userService) UserLogin(ctx context.Context, in *LoginRequest, opts ...c
 	out := new(LoginResponse)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
+		fmt.Println(err)
 		return nil, err
 	}
 	return out, nil
